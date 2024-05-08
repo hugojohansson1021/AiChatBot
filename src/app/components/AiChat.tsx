@@ -12,7 +12,7 @@ interface Message {
   text: string;
 }
 
-const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'HugoAI', botAvatarSrc = '/MyFace.png' }) => {
+const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'HugoAI', botAvatarSrc = '/Bot.png' }) => {
   const [question, setQuestion] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
     { type: 'response', text: 'Har du några frågor är det bara att fråga på?' },
