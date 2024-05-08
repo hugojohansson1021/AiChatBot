@@ -12,10 +12,10 @@ interface Message {
   text: string;
 }
 
-const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'HugoAI', botAvatarSrc = '/Bot.png' }) => {
+const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'AI Chatbot', botAvatarSrc = '/Bot.png' }) => {
   const [question, setQuestion] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
-    { type: 'response', text: 'Har du några frågor är det bara att fråga på?' },
+    { type: 'response', text: 'Jag är en chatbot med information om intermittent fasting och nutrition, Har du några frågor?' },
   ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -56,13 +56,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'HugoAI', botA
 
   return (
     
-    <div style={{ fontFamily: 'Arial, sans-serif', width: '89vw', maxWidth: '500px', margin: 'auto', border: '1px solid #000000', borderRadius: '10px', overflow: 'hidden' }}>
-      <div style={{ padding: '10px', backgroundColor: '#76FFBF', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', width: '89vw', maxWidth: '500px', margin: 'auto', border: '1x solid #000000', borderRadius: '20px', overflow: 'hidden' }}>
+      <div style={{ padding: '10px', backgroundColor: '#01FFF0', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
         <h1 style={{ alignSelf: 'center', color: 'black' }}>{botName}</h1>
       </div>
       <div style={{ height: '500px', overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#fff' }}>
         {messages.map((message, index) => (
-          <div key={index} style={{ alignSelf: message.type === 'question' ? 'flex-end' : 'flex-start', backgroundColor: message.type === 'question' ? '#76FFBF' : '#76FFBF', borderRadius: '10px', padding: '10px', maxWidth: '80%', display: 'flex', alignItems: 'center', position: 'relative' }}>
+          <div key={index} style={{ alignSelf: message.type === 'question' ? 'flex-end' : 'flex-start', backgroundColor: message.type === 'question' ? '#01FFF0' : '#01FFF0', borderRadius: '10px', padding: '10px', maxWidth: '80%', display: 'flex', alignItems: 'center', position: 'relative',  }}>
             {message.type === 'response' && (
               <img src={botAvatarSrc} alt="Bot Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }} />
             )}
@@ -75,7 +75,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'HugoAI', botA
                 right: message.type === 'question' ? '10px' : 'auto',
                 width: '10px',
                 height: '10px',
-                backgroundColor: '#76FFBF',
+                backgroundColor: '#01FFF0',
                 transform: message.type === 'question' ? 'rotate(45deg)' : 'rotate(-45deg)',
               }}
             />
@@ -95,7 +95,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'HugoAI', botA
       </div>
       <form onSubmit={handleSubmit} style={{ display: 'flex', borderTop: '1px solid #000', padding: '10px', backgroundColor: '#f5f5f5', color: '#666' }}>
         <input type="text" value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Skriv din fråga här" disabled={isLoading} style={{ flexGrow: 1, padding: '10px', marginRight: '10px', border: '1px solid #000000', borderRadius: '10px', fontSize: '16px' }} />
-        <button type="submit" disabled={isLoading} style={{ padding: '10px 15px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#76FFBF', color: 'black', borderRadius: '10px' }}>
+        <button type="submit" disabled={isLoading} style={{ padding: '10px 15px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#01FFF0', color: 'black', borderRadius: '10px' }}>
           Sök
         </button>
       </form>
